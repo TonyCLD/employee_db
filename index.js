@@ -3,6 +3,8 @@ const axios = require("axios");
 const fs = require('fs');
 const Employee = require('./lib/Employee.js');
 const Engineer = require('./lib/Engineer.js');
+const Manager = require('./lib/Manager.js');
+const Intern = require("./lib/Intern.js");
 
 const questions = [
     {
@@ -37,15 +39,15 @@ const questions = [
     },
 ];
 
-inquirer.prompt(questions).then((data) => {
+
+let myEmployee = new Promise(function(myResolve, myReject) {
+    // "Producing Code" (May take some time)
+        inquirer.prompt(questions).then((data) => {
         const datacombined1 = data;
         console.log(datacombined1);
-    }.then(() => ) {const fullinfo2 = new Engineer (datacombined1.name, datacombined1.emp_id, datacombined1.email, datacombined1.role,);
-    console.log(fullinfo2);} );
-
-// const emp_card = new Employee(datacombined1);
-// console.log(emp_card);
-
-// const fullinfo = new Employee ('tony', 025845, 'tony@tony.com');
-// console.log(fullinfo);
-
+        const newemployee = new Intern(datacombined1.name, datacombined1.emp_id, datacombined1.email, datacombined1.school);
+        console.log(newemployee);
+    myResolve(); // when successful
+    myReject();  // when error
+    });
+})
